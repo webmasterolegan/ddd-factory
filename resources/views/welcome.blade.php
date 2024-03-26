@@ -6,8 +6,8 @@
 
 <title>{{ config('app.name') }}</title>
 
+<div id=js-app></div>
 
-
-
+@vite('resources/js/app.js')
 
 </html>
