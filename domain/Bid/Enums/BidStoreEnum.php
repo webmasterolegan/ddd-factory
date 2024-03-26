@@ -2,9 +2,9 @@
 
 namespace Domain\Bid\Enums;
 
-use Domain\Bid\Factories\MainDbBidStoreFactory;
-use Domain\Bid\Factories\FileBidStoreFactory;
 use Domain\Bid\Contracts\BidStoreFactoryContract;
+use Domain\Bid\Factories\FileBidStoreFactory;
+use Domain\Bid\Factories\MainDbBidStoreFactory;
 
 /**
  * Возможные места сохранения заявок
@@ -27,8 +27,8 @@ enum BidStoreEnum implements BidStoreFactoryContract
     public function getFactory()
     {
         return match ($this) {
-            self::MAIN_DB => new MainDbBidStoreFactory,
-            self::FILE => new FileBidStoreFactory,
+            self::MAIN_DB => new MainDbBidStoreFactory(),
+            self::FILE => new FileBidStoreFactory(),
 
             default => throw new \Exception(message: __('bid.undefined_store', ['store' => $this->name]))
         };
