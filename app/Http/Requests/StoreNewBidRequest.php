@@ -26,7 +26,7 @@ class StoreNewBidRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:255',
-            'telephone' => 'required|string',
+            'telephone' => 'required|string|max:11',
             'text' => 'required|string',
         ];
     }
